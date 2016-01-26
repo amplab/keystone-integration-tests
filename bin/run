@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Figure out where we are.
+FWDIR="$(cd `dirname $0`; pwd)"
+
+DATE=`data +%Y%m%d.%H%M%S`
+
+export KEYSTONE_DIR=$(PWDIR)/../../keystone
+export KEYSTONE_VERSION=$1 #TODO: Argument validation.
+
+if [ ! -d logs ]; then
+  mkdir -p logs
+fi
+
+TEST_NAME=all #TODO: Make this a parameter.
+LOG_DIR=logs/$TEST_NAME.$DATE.log
+
+$(FWDIR)/prep.sh
+$(FWDIR)/build.sh
+$(FWDIR)/run-test.sh $TEST_NAME >$LOG_DIR 2&>1
+$(FWDIR)
