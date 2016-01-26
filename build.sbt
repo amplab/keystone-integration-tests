@@ -2,9 +2,9 @@ import AssemblyKeys._
 
 assemblySettings
 
-name := "keystone-example"
+name := "keystone-integration-tests"
 
-version := "0.2"
+version := "0.1"
 
 organization := "edu.berkeley.cs.amplab"
 
