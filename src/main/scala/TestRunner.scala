@@ -1,3 +1,5 @@
+package pipelines
+
 import org.apache.spark.{SparkConf, SparkContext}
 import pipelines.Logging
 import tests.IntegrationTests._
@@ -15,7 +17,9 @@ object TestRunner extends Logging {
 
     val results = runs.map(t => (t, tests(t)(sc)))
 
-    results.foreach(s => logInfo(s.toString))
+    for (r <- results) {
+      println(s"$r")
+    }
 
     sc.stop()
 

@@ -3,10 +3,20 @@
 # Figure out where we are.
 FWDIR="$(cd `dirname $0`; pwd)"
 
-DATE=`data +%Y%m%d.%H%M%S`
+DATE=`date +%Y%m%d.%H%M%S`
 
-export KEYSTONE_DIR=$(PWDIR)/../../keystone
+export HADOOP_HOME=/usr
+export KEYSTONE_DIR=$FWDIR/../../keystone-test
 export KEYSTONE_VERSION=$1 #TODO: Argument validation.
+export JAVA_HOME=/usr/java/jdk1.8.0_65
+
+export KEYSTONE_MEM=${KEYSTONE_MEM:-20g}
+export HDFS_PATH=/user/`whoami`
+export LOCAL_PATH=~/tmpdata/
+
+if [ ! -d LOCAL_PATH ]; then
+  mkdir -p $LOCAL_PATH
+fi
 
 if [ ! -d logs ]; then
   mkdir -p logs
@@ -15,7 +25,6 @@ fi
 TEST_NAME=all #TODO: Make this a parameter.
 LOG_FILE=logs/$TEST_NAME.$DATE.log
 
-bash $(FWDIR)/prep.sh
-bash $(FWDIR)/build.sh
-bash $(FWDIR)/run-test.sh $TEST_NAME >$LOG_FILE 2&>1
-bahs $(FWDIR)/parse-logs.sh $LOG_FILE
+#bash $FWDIR/prep.sh
+bash $FWDIR/build.sh
+bash $FWDIR/run-test.sh pipelines.TestRunner $TEST_NAME 2&>1 >$LOG_FILE 

@@ -19,6 +19,7 @@ case class TestResult(seconds: Double, score: Double)
 
 object IntegrationTests {
   val baseDir = System.getenv("HDFS_PATH")
+  val localDir= System.getenv("LOCAL_PATH")
 
   val tests: Map[String, SparkContext => TestResult] = Map("cifar" -> cifar,
     "voc" -> voc,
@@ -33,8 +34,8 @@ object IntegrationTests {
 
   def cifar(sc: SparkContext): TestResult = {
     val conf = RandomCifarConfig(
-      trainLocation=s"$baseDir/cifar_train.bin",
-      testLocation = s"$baseDir/cifar_test.bin",
+      trainLocation=s"$localDir/cifar_train.bin",
+      testLocation = s"$localDir/cifar_test.bin",
       numFilters=1000,
       lambda=Some(3000.0)
     )
