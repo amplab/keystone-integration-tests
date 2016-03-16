@@ -15,6 +15,11 @@ if [ -z ${KEYSTONE_VERSION+x} ]; then
     exit 1
 fi
 
+if [ -z ${JAVA_HOME+x} ]; then
+    echo "JAVA_HOME must be set"
+    exit 1
+fi
+
 git clone -b $KEYSTONE_VERSION --single-branch \
   https://github.com/amplab/keystone.git $KEYSTONE_DIR
 

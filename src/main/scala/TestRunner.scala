@@ -7,8 +7,10 @@ import tests.IntegrationTests._
 object TestRunner extends Logging {
   def main(args: Array[String]) = {
     val testName = if (args.length < 1) "all" else args(0)
-
-    val sc = new SparkContext(new SparkConf().setAppName(s"TestRunner($testName)"))
+    val conf = new SparkConf()
+    conf.setAppName(s"TestRunner($testName)")
+    conf.remove("spark.jars")
+    val sc = new SparkContext(conf)
 
     val runs = testName match {
       case "all" => tests.keys

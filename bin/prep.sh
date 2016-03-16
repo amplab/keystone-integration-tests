@@ -38,5 +38,7 @@ $HADOOP_HOME/bin/hadoop fs -copyFromLocal VOCtest_06-Nov-2007.tar $HDFS_PATH
 #Newsgroups Data
 #Get the data
 wget http://qwone.com/~jason/20Newsgroups/20news-bydate.tar.gz
+tar zxvf 20news-bydate.tar.gz
 
-$HADOOP_HOME/bin/hadoop fs -copyFromLocal 20news-bydate.tar.gz $HDFS_PATH
+$HADOOP_HOME/bin/hadoop fs -copyFromLocal 20news-bydate-train $HDFS_PATH
+$HADOOP_HOME/bin/hadoop fs -copyFromLocal 20news-bydate-test $HDFS_PATH
