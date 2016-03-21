@@ -16,18 +16,17 @@ if [ -z "$1" ]; then
 fi
 
 if [ -z "$OMP_NUM_THREADS" ]; then
-    export OMP_NUM_THREADS=1 # added as we were nondeterministically running into an openblas race condition 
+    export OMP_NUM_THREADS=1 # added as we were nondeterministically running into an openblas race condition
+    echo "automatically setting OMP_NUM_THREADS=$OMP_NUM_THREADS"
 fi
 
 
-echo "automatically setting OMP_NUM_THREADS=$OMP_NUM_THREADS"
-
 JARFILE="$FWDIR/target/scala-2.10/keystone-app-assembly.jar"
 
-# TODO: Figure out a way to pass in either a conf file / flags to spark-submit
+# TODO: Figure out a way to pass in either a conf file / flags to spark-s   ubmit
 KEYSTONE_MEM=${KEYSTONE_MEM:-1g}
 export KEYSTONE_MEM
-LD_LIBRARY_PATH=/opt/amp/gcc/lib64:/opt/amp/openblas/lib:$LD_LIBRARY_PATH\
+LD_LIBRARY_PATH=/opt/amp/gcc/lib64:/opt/amp/openblas/lib:$LD_LIBRARY_PATH
 
 # Set some commonly used config flags on the cluster
 spark-submit \

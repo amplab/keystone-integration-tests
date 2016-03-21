@@ -18,7 +18,7 @@ fi
 #CIFAR Data
 
 #Get the data
-wget http://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz
+wget http://s3-us-west-2.amazonaws.com/keystoneml.data/cifar/cifar-10-binary.tar.gz
 
 #Decompress it
 tar zxvf cifar-10-binary.tar.gz
@@ -37,7 +37,7 @@ $HADOOP_HOME/bin/hadoop fs -copyFromLocal VOCtest_06-Nov-2007.tar $HDFS_PATH
 
 #Newsgroups Data
 #Get the data
-wget http://qwone.com/~jason/20Newsgroups/20news-bydate.tar.gz
+wget http://s3-us-west-2.amazonaws.com/keystoneml.data/20Newsgroups/20news-bydate.tar.gz
 tar zxvf 20news-bydate.tar.gz
 
 $HADOOP_HOME/bin/hadoop fs -copyFromLocal 20news-bydate-train $HDFS_PATH
