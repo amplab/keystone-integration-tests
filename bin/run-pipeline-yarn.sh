@@ -11,7 +11,7 @@ shift
 FWDIR="$(cd `dirname $0`/..; pwd)"
 
 if [ -z "$1" ]; then
-  echo "Usage: run-main.sh <class> [<args>]" >&2
+  echo "Usage: run-pipeline-yarn.sh <class> [<args>]" >&2
   exit 1
 fi
 
