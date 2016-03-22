@@ -1,0 +1,4 @@
+cifar.*error is
+voc.*TEST MAP
+Avg Accuracy
+TestRunner.*test
