@@ -16,7 +16,7 @@ export KEYSTONE_DIR=$FWDIR/../../keystone-test
 export KEYSTONE_VERSION=$1
 export JAVA_HOME=/usr/java/jdk1.8.0_65
 
-export KEYSTONE_MEM=${KEYSTONE_MEM:-20g}
+export KEYSTONE_MEM=${KEYSTONE_MEM:-40g}
 export HDFS_PATH=/user/`whoami`
 export LOCAL_PATH=~/tmpdata/
 
